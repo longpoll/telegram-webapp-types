@@ -4,7 +4,7 @@
     "description": "TS typings for Telegram WebApps. https://core.telegram.org/bots/webapps",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/zakarliuka/tg-webapp-types.git"
+        "url": "git+https://github.com/longpoll/telegram-webapp-types.git"
     },
     "keywords": [
         "typescript",
