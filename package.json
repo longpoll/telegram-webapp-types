@@ -1,10 +1,13 @@
 {
     "name": "@longpoll/telegram-webapp-types",
-    "version": "7.7.1",
+    "version": "7.7.3",
     "description": "TS typings for Telegram WebApps. https://core.telegram.org/bots/webapps",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/longpoll/telegram-webapp-types.git"
+    },
+    "scripts": {
+        "pub": "npm version patch --force && npm publish"
     },
     "keywords": [
         "typescript",

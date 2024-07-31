@@ -22,6 +22,37 @@ export declare namespace TelegramWebApp {
     };
 
     /**
+     * This object describes additional sharing settings for the native story editor.
+     */
+    type StoryShareParams = {
+        /**
+         * Optional. The caption to be added to the media, 0-200 characters for regular users and 0-2048 characters for premium subscribers.
+         */
+        text?: string;
+
+        /**
+         * Optional. An object that describes a widget link to be included in the story. 
+         * Note that only premium subscribers can post stories with links.
+         */
+        widget_link?: StoryWidgetLink;
+    };
+
+    /**
+     * This object describes a widget link to be included in the story.
+     */
+    type StoryWidgetLink = {
+        /**
+         * The URL to be included in the story.
+         */
+        url: string;
+
+        /**
+         * Optional. The name to be displayed for the widget link, 0-48 characters.
+         */
+        name?: string;
+    };
+
+    /**
      * This object describes the native popup for authenticating the user using biometrics.
      */
 
@@ -684,17 +715,34 @@ export declare namespace TelegramWebApp {
          */
         is_premium?: true;
 
-        /** Optional. True, if this user added the bot to the attachment menu.
+        /**
+         * Optional. True, if this user added the bot to the attachment menu
          */
         added_to_attachment_menu?: true;
 
-        /** Optional. True, if this user allowed the bot to message them.
+        /** Optional. True, if this user added the bot to the attachment menu.
          */
-        allows_write_to_pm?: true;
+        can_join_groups?: true;
 
-        /** Optional. URL of the user’s profile photo. The photo can be in .jpeg or .svg formats. Only returned for Mini Apps launched from the attachment menu.
+        /**
+         * Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
          */
-        photo_url?: string;
+        can_read_all_group_messages?: true;
+
+        /**
+         * Optional. True, if the bot supports inline queries. Returned only in getMe.
+         */
+        supports_inline_queries?: true;
+
+        /** 
+         * Optional. True, if the bot can be connected to a Telegram Business account to receive its messages. Returned only in getMe.
+         */
+        can_connect_to_business?: true;
+
+        /** 
+         * Optional. True, if the bot has a main Web App. Returned only in getMe.
+         */
+        has_main_web_app?: true;
     };
 
     type WebAppChat = {
@@ -859,6 +907,12 @@ export declare namespace TelegramWebApp {
         /** Function that opens a telegram link inside Telegram app. The Mini App will be closed.
          */
         openTelegramLink(url: string): void;
+
+        /**
+         * A method that opens the native story editor with the media specified in the media_url parameter as an HTTPS URL. 
+         * An optional params argument of the type StoryShareParams describes additional sharing settings.
+         */
+        shareToStory(media_url: string, params?: StoryShareParams): void;
 
         /** Function that opens an invoice using the link url. The Mini App will receive the event invoiceClosed when the invoice is closed.
          */
